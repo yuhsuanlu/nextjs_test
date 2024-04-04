@@ -49,6 +49,8 @@ async function seedUsers(client) {
 async function seedInvoices(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    // Delete invoices tables and its data from placeholder-data.js
+    await client.sql`DROP TABLE invoices`;
 
     // Create the "invoices" table if it doesn't exist
     const createTable = await client.sql`
@@ -89,6 +91,8 @@ async function seedInvoices(client) {
 async function seedCustomers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    // Delete customers tables and its data from placeholder-data.js
+    await client.sql`DROP TABLE customers`;
 
     // Create the "customers" table if it doesn't exist
     const createTable = await client.sql`
